@@ -80,13 +80,75 @@ for(int i=0;i<arr.size();i++){
                          }
           
           
+ <5 >   
+       
+    An arcade game player wants to climb to the top of the leaderboard and track their ranking. The game uses Dense Ranking, so its leaderboard works like this:
+The player with the highest score is ranked number  on the leaderboard.
+Players who have equal scores receive the same ranking number, and the next player(s) receive the immediately following ranking number.
+Example    ,  ranked=[100,90,90,80,60] (Descending order)
+              player=[70,72,80,105,120]  (Ascending order)
+          output = [4,4,3,1,1]
+          
+      ---code---
+       
+  vector<int> climbingLeaderboard (vector<int> ranked, vector<int> player) {
+     int rank[200000 +1];
+    for (int i = 0; i < ranked.size(); i++) {   // Loop for finding rank array based on index//
+        if (i == 0) {
+            rank[i] = 1;
+        }
+        else {
+            if (ranked[i] == ranked[i-1]) {
+                rank[i] = rank[i - 1];
+            }
+            else {
+                rank[i] = rank[i - 1] + 1;
+            }
+        }
+    }     //Loop for rank array closed//
+     int  points=(ranked.size())-1;
+vector<int >v;
+
+for(int j=0;j<player.size();j++){
+    
+    while(points>=0 && player[j]>ranked[points]){
+        points--;
+    }
+    if(points==-1){
+        v.push_back(1);
+    }
+    else if(player[j]==ranked[points]){
+        v.push_back(rank[points]);
+    }
+    else if(player[j]<ranked[points]){
+        v.push_back(rank[points]+1);
+    }
+}
+return v;
+} // Function closed//
+                                       
           
           
           
-          
-          
-          
-          
+ <6 >   Railway Time Conversion code.
+       
+       string timeConversion(string s) {
+   if(s[8]=='A'){
+        if(s[0]=='1'&& s[1]=='2'){
+            s[0]='0';
+            s[1]='0';
+        }
+   }
+   else{
+       if(! (s[0]=='1'&&s[1]=='2') ){
+           s[0]+=1;
+           s[1]+=2;
+       }
+   }
+ string s1 =s.substr(0,8);
+   
+   return s1;
+}
           
           
           
