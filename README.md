@@ -22,7 +22,7 @@
         for(int i=0;i<gcd;i++){
          int temp=a[i];
          int j=i;
-         while(1) {     // we are using this loop to reach the end of the array by jumping  d distance each time .
+         while(1) {     // we are using this loop to reach the end of the array by jumping  d  distance each time .
            int k=j+ d;
                 if(k>=n)     // This line is to terminate the loop , the moment we reach at the end of array.
                   k=k-n;
@@ -45,6 +45,9 @@
    sort( arr.begin() , arr.end() );
 for(int i=0;i<arr.size();i++){
     x=count( arr.begin(),arr.end(),arr[i] );
+    
+    
+    
     
        if(x>max_count){
         index=i;
