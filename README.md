@@ -193,6 +193,45 @@ return v;
              
              
              
+             
+            < 8 >  Maximal subset S' of a set S ( Distinct integer ) where sum of any two  no is Not divisible by a number k.
+                  
+                  
+ int nonDivisibleSubset(int k, vector<int> s) {
+map<int,int>m;
+int ans=0,c=0,j;
+for(int a=0;a<s.size();a++){
+    m[s[a]%k]++;
+}
+if(m[0]>0){
+    ans++;
+}
+if (k%2==0) {
+    for(int i=1;i<k;i++){
+        j=k-i;
+        if(i==k/2){
+            (m[i]>0)?ans++:c=1;
+            break;
+        }
+        else{
+            ans=ans+max(m[i],m[j]);
+        }
+    }
+}
+else {
+    for(int i=1;i<k;i++){
+        j=k-i;
+        if(j<i){
+           break;
+        }
+        else{
+            ans=(ans+max(m[i],m[j]) );
+            }
+    }
+}
+return ans;
+}
+             
        
        
           
