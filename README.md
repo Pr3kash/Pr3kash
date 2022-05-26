@@ -197,8 +197,8 @@ return v;
             < 8 >  Maximal subset S' of a set S ( Distinct integer ) where sum of any two  no is Not divisible by a number k.
                   
                   
- int nonDivisibleSubset(int k, vector<int> s) {
-map<int,int>m;
+int nonDivisibleSubset(int k, vector<int> s) {
+ map<int>m;
 int ans=0,c=0,j;
 for(int a=0;a<s.size();a++){
     m[s[a]%k]++;
@@ -234,11 +234,29 @@ return ans;
              
        
        
+                  
+          < 9 >   Return the string which is the  Next largest string of a given string (if arranged in Lexicographical order).
           
           
           
-          
-          
+ string biggerIsGreater(string w) {
+    string s0;
+    int  n=w.length(),c=0;
+    char arr[n+1];
+    strcpy(arr, w.c_str());                        // COPYING A COMPLETE STRING IN CHAR ARRAY.
+    while (next_permutation(arr, arr+ n)){                // PRE DEFINE FUNCTION -- next_permutation -- It returns next greater string of current string passed.
+         string s2(arr,arr+n);                     // CHAR ARRAY TO STRING.
+         s0=s2;
+         c++;
+         break;
+     }
+     if(c==0){
+        return "no answer";
+     }
+     else{
+         return s0;
+     }
+}
           
           
           
