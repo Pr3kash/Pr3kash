@@ -259,7 +259,27 @@ return ans;
 }
           
           
-          
+          < 10 >  Kth smallest in the Row - Column wise sorted matrix . 
+                
+                
+    int kthSmallest(int mat[MAX][MAX], int n, int k)
+    {
+   int low = mat[0][0], high = mat[n-1][n-1], mid;
+   while(low <= high) {
+       mid = low + (high - low)/2;
+       int count = 0;
+       for(int i=0; i<n; i++) {
+           count = count + upper_bound(mat[i], mat[i]+n, mid) - mat[i];
+       }
+       if(count < k) {
+           low = mid + 1;
+       }
+       else {
+           high = mid - 1;
+       }
+   }
+   return low;
+}
           
           
           
